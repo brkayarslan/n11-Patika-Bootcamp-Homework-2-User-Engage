@@ -42,4 +42,10 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Status status;
+
+
+    @PrePersist
+    protected void onCreate() {
+        createDate = LocalDateTime.now();
+    }
 }
