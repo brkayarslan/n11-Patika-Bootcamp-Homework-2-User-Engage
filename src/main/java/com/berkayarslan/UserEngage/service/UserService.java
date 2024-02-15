@@ -1,5 +1,7 @@
 package com.berkayarslan.UserEngage.service;
 
+import com.berkayarslan.UserEngage.dto.UserDTO;
+import com.berkayarslan.UserEngage.mapper.UserMapper;
 import com.berkayarslan.UserEngage.model.User;
 import com.berkayarslan.UserEngage.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,27 +9,34 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
+        this.userMapper = userMapper;
     }
 
-    public List<User> findAllUsers(){
-        return this.userRepository.findAll();
+    public List<UserDTO> findAllUsers(){
+        return userRepository.findAll().stream()
+                .map(userMapper::userToUserDTO)
+                .collect(Collectors.toList());
     }
 
-    public Optional<User> findUserById(Long id){
-        return userRepository.findById(id);
+    public Optional<UserDTO> findUserById(Long id){
+        return userRepository.findById(id).map(userMapper::userToUserDTO);
     }
 
-    public User saveUser(User user){
-        return userRepository.save(user);
+    public UserDTO saveUser(UserDTO userDTO){
+        User user = userMapper.userDTOToUser(userDTO);
+        User savedUser = userRepository.save(user);
+        return userMapper.userToUserDTO(savedUser);
     }
 
     public void deleteUser(Long id){

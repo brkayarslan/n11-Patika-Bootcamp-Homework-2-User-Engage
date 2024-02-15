@@ -1,5 +1,7 @@
 package com.berkayarslan.UserEngage.service;
 
+import com.berkayarslan.UserEngage.dto.UserCouponDTO;
+import com.berkayarslan.UserEngage.mapper.UserCouponMapper;
 import com.berkayarslan.UserEngage.model.UserCoupon;
 import com.berkayarslan.UserEngage.repository.UserCouponRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,30 +9,40 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserCouponService {
 
     private final UserCouponRepository userCouponRepository;
+    private final UserCouponMapper userCouponMapper;
 
     @Autowired
-    public UserCouponService(UserCouponRepository userCouponRepository) {
+    public UserCouponService(UserCouponRepository userCouponRepository, UserCouponMapper userCouponMapper) {
         this.userCouponRepository = userCouponRepository;
+        this.userCouponMapper = userCouponMapper;
     }
 
-    public List<UserCoupon> findAllUserCoupons(){
-        return userCouponRepository.findAll();
+    public List<UserCouponDTO> findAllUserCoupons(){
+        return userCouponRepository.findAll().stream()
+                .map(userCouponMapper::userCouponToUserCouponDTO)
+                .collect(Collectors.toList());
     }
 
-    public Optional<UserCoupon> findUserCouponsById(Long id){
-        return userCouponRepository.findById(id);
+    public Optional<UserCouponDTO> findUserCouponsById(Long id){
+        return userCouponRepository.findById(id)
+                .map(userCouponMapper::userCouponToUserCouponDTO);
     }
 
-    public List<UserCoupon> findUserCouponsByUserId(Long userId){
-        return userCouponRepository.findByUserId(userId);
+    public List<UserCouponDTO> findUserCouponsByUserId(Long userId){
+        return userCouponRepository.findByUserId(userId).stream()
+                .map(userCouponMapper::userCouponToUserCouponDTO)
+                .collect(Collectors.toList());
     }
-    public UserCoupon saveUserCoupon(UserCoupon userCoupon){
-        return userCouponRepository.save(userCoupon);
+    public UserCouponDTO saveUserCoupon(UserCouponDTO userCouponDTO){
+        UserCoupon userCoupon = userCouponMapper.userCouponDTOToUSerCoupon(userCouponDTO);
+        UserCoupon savedUserCoupon = userCouponRepository.save(userCoupon);
+        return userCouponMapper.userCouponToUserCouponDTO(savedUserCoupon);
     }
 
     public void deleteUserCouponById(Long id){
