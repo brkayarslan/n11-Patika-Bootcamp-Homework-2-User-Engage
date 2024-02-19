@@ -6,11 +6,13 @@ import com.berkayarslan.UserEngage.mapper.UserMapper;
 import com.berkayarslan.UserEngage.model.User;
 import com.berkayarslan.UserEngage.request.UserSaveRequest;
 import com.berkayarslan.UserEngage.request.UserUpdateRequest;
+import com.berkayarslan.UserEngage.request.UserUpdateStatusRequest;
 import com.berkayarslan.UserEngage.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -35,16 +37,32 @@ public class UserControllerContractImpl implements UserControllerContract {
 
     @Override
     public UserDTO updateUser(UserUpdateRequest request) {
-        return null;
+        User user = userService.findByIdWithControl(request.id());
+        UserMapper.INSTANCE.updateUserFields(user,request);
+        userService.save(user);
+        return UserMapper.INSTANCE.userToUserDTO(user);
+    }
+
+    @Override
+    public UserDTO updateUserStatus(UserUpdateStatusRequest request) {
+        User user = userService.findByIdWithControl(request.id());
+        user.setStatus(request.status());
+        UserDTO userDTO = UserMapper.INSTANCE.userToUserDTO(user);
+        return userDTO;
     }
 
     @Override
     public UserDTO getUserById(Long id) {
-        return null;
+
+        User user = userService.findByIdWithControl(id);
+
+        return UserMapper.INSTANCE.userToUserDTO(user);
     }
 
     @Override
     public void deleteCustomer(Long id) {
-
+        userService.delete(id);
     }
+
+
 }
