@@ -1,46 +1,48 @@
 package com.berkayarslan.UserEngage.model;
 
+import com.berkayarslan.UserEngage.general.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+/*
+* id, createdAt, createdBy, updatedAt, updatedBy
+* @author berkayaslan
+* */
 
-@Setter
-@Getter
 @Entity
 @Table(name = "user_table")
-public class User {
+@Data
+public class User extends BaseEntity {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
-    @Setter(AccessLevel.PRIVATE)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "NAME",nullable = false,length = 100)
     private String name;
 
-    @Column(nullable = false)
+    @Column(name = "SURNAME",nullable = false,length = 100)
     private String surname;
 
-    @Column(nullable = false)
+    @Column(name = "CREATE_DATE",nullable = false)
     private LocalDateTime createDate;
 
+    @Column(name = "BIRTH_DATE")
     private LocalDate birthDate;
 
     @Column(nullable = false)
     private String email;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "GENDER",length = 30)
     private Gender gender;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "STATUS",nullable = false,length = 30)
     private Status status;
 
 
