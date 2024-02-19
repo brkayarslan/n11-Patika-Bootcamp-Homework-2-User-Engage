@@ -5,23 +5,24 @@ import com.berkayarslan.UserEngage.model.Status;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
-public class UserDTO {
 
-    @Setter(AccessLevel.PRIVATE)
-    private Long id;
-    private String name;
-    private String surname;
-    private LocalDateTime createDate;
-    private LocalDate birthDate;
-    private String email;
-    private Gender gender;
-    private Status status;
+public record UserDTO (
+        Long id,
+        String name,
+        String surname,
+        LocalDateTime createDate,
+        LocalDate birthDate,
+        String email,
+        Gender gender,
+        Status status){
+
+
+
 
 
 }
