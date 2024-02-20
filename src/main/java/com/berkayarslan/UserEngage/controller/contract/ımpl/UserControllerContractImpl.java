@@ -4,15 +4,14 @@ import com.berkayarslan.UserEngage.controller.contract.UserControllerContract;
 import com.berkayarslan.UserEngage.dto.UserDTO;
 import com.berkayarslan.UserEngage.mapper.UserMapper;
 import com.berkayarslan.UserEngage.model.User;
-import com.berkayarslan.UserEngage.request.UserSaveRequest;
-import com.berkayarslan.UserEngage.request.UserUpdateRequest;
-import com.berkayarslan.UserEngage.request.UserUpdateStatusRequest;
+import com.berkayarslan.UserEngage.request.user.UserSaveRequest;
+import com.berkayarslan.UserEngage.request.user.UserUpdateRequest;
+import com.berkayarslan.UserEngage.request.user.UserUpdateStatusRequest;
 import com.berkayarslan.UserEngage.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service

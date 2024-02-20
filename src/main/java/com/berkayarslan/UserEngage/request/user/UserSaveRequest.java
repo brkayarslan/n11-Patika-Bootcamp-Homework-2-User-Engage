@@ -1,4 +1,4 @@
-package com.berkayarslan.UserEngage.request;
+package com.berkayarslan.UserEngage.request.user;
 
 import com.berkayarslan.UserEngage.model.Gender;
 import com.berkayarslan.UserEngage.model.Status;
