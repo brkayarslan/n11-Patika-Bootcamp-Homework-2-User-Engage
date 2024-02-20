@@ -1,5 +1,6 @@
 package com.berkayarslan.UserEngage.model;
 
+import com.berkayarslan.UserEngage.general.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -11,16 +12,16 @@ import java.time.LocalDate;
 @Setter
 @Entity
 @Table(name = "userCoupon")
-public class UserCoupon {
+public class UserCoupon extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.PRIVATE)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+//    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id",nullable = false)
-    private User user;
+    private Long userId;
 
     @Column(nullable = false)
     private String name;

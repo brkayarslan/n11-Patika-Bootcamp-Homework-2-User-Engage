@@ -3,10 +3,10 @@ package com.berkayarslan.UserEngage.controller;
 import com.berkayarslan.UserEngage.controller.contract.UserControllerContract;
 import com.berkayarslan.UserEngage.dto.UserDTO;
 import com.berkayarslan.UserEngage.general.RestResponse;
-import com.berkayarslan.UserEngage.model.Status;
-import com.berkayarslan.UserEngage.request.UserSaveRequest;
-import com.berkayarslan.UserEngage.request.UserUpdateRequest;
-import com.berkayarslan.UserEngage.request.UserUpdateStatusRequest;
+import com.berkayarslan.UserEngage.request.user.UserSaveRequest;
+import com.berkayarslan.UserEngage.request.user.UserUpdateRequest;
+import com.berkayarslan.UserEngage.request.user.UserUpdateStatusRequest;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,9 +19,11 @@ public class UserController {
 
 
   private UserControllerContract userControllerContract;
+
     public UserController(UserControllerContract userControllerContract) {
         this.userControllerContract = userControllerContract;
     }
+
     @GetMapping
     public ResponseEntity<RestResponse<List<UserDTO>>> findAllUsers(){
         List<UserDTO> allUsers = userControllerContract.findAllUsers();
