@@ -1,6 +1,7 @@
 package com.berkayarslan.UserEngage.model;
 
 
+import com.berkayarslan.UserEngage.general.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -10,16 +11,16 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "userReview")
-public class UserReview {
+public class UserReview extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.PRIVATE)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id",nullable = false)
-    private User user;
+
+    @Column(nullable = false)
+    private Long userId;
 
     @Column(nullable = false)
     private Integer productId;
