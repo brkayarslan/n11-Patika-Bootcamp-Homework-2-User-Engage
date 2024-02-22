@@ -6,7 +6,6 @@ import com.berkayarslan.UserEngage.general.RestResponse;
 import com.berkayarslan.UserEngage.request.user.UserSaveRequest;
 import com.berkayarslan.UserEngage.request.user.UserUpdateRequest;
 import com.berkayarslan.UserEngage.request.user.UserUpdateStatusRequest;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

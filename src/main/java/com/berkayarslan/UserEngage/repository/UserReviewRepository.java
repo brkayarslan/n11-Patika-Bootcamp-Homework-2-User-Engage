@@ -7,9 +7,7 @@ import java.util.List;
 
 public interface UserReviewRepository extends JpaRepository<UserReview,Long> {
 
-    // Kullanıcı ID'sine göre yorumları bulan bir sorgu
     List<UserReview> findByUserId(Long userId);
 
-    // Ürün ID'sine göre yorumları bulan bir sorgu
     List<UserReview> findByProductId(Long productId);
 }
