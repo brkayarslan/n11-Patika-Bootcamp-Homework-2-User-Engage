@@ -1,17 +1,11 @@
 package com.berkayarslan.UserEngage.service;
 
-import com.berkayarslan.UserEngage.dto.UserCouponDTO;
 import com.berkayarslan.UserEngage.general.BaseEntityService;
-import com.berkayarslan.UserEngage.mapper.UserCouponMapper;
-import com.berkayarslan.UserEngage.model.User;
 import com.berkayarslan.UserEngage.model.UserCoupon;
 import com.berkayarslan.UserEngage.repository.UserCouponRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class UserCouponService extends BaseEntityService<UserCoupon, UserCouponRepository> {

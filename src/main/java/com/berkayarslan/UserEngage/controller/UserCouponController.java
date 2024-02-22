@@ -4,7 +4,6 @@ import com.berkayarslan.UserEngage.controller.contract.UserCouponControllerContr
 import com.berkayarslan.UserEngage.dto.UserCouponDTO;
 import com.berkayarslan.UserEngage.general.RestResponse;
 import com.berkayarslan.UserEngage.request.user_coupon.UserCouponSaveRequest;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

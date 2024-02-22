@@ -1,17 +1,11 @@
 package com.berkayarslan.UserEngage.service;
 
-import com.berkayarslan.UserEngage.dto.UserReviewDTO;
 import com.berkayarslan.UserEngage.general.BaseEntityService;
-import com.berkayarslan.UserEngage.mapper.UserReviewMapper;
-import com.berkayarslan.UserEngage.model.User;
 import com.berkayarslan.UserEngage.model.UserReview;
 import com.berkayarslan.UserEngage.repository.UserReviewRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class UserReviewService extends BaseEntityService<UserReview,UserReviewRepository> {
