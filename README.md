@@ -26,6 +26,7 @@ UserEngage is a Spring Boot-based demo project designed to illustrate a user eng
 
 - JDK 21 or above
 - Maven 3.6 or above
+- Spring Boot 3.2.2 or above
 
 ### Installation and Setup
 
