@@ -4,14 +4,12 @@ import com.berkayarslan.UserEngage.controller.contract.ProductControllerContract
 import com.berkayarslan.UserEngage.dto.ProductDTO;
 import com.berkayarslan.UserEngage.mapper.ProductMapper;
 import com.berkayarslan.UserEngage.model.Product;
-import com.berkayarslan.UserEngage.model.Status;
 import com.berkayarslan.UserEngage.request.product.ProductBatchUpdateRequest;
 import com.berkayarslan.UserEngage.request.product.ProductSaveRequest;
 import com.berkayarslan.UserEngage.service.ProductService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,12 +28,11 @@ public class ProductControllerContractImpl implements ProductControllerContract 
         return ProductMapper.INSTANCE.productToProductDTO(product);
     }
     @Override
-    public ProductDTO saveAllProduct(List<ProductSaveRequest> request) {
+    public void saveAllProduct(List<ProductSaveRequest> request) {
         List<Product> productList = ProductMapper.INSTANCE.ProductDTOListToProductList(request);
         productList.forEach(product -> {
             productService.saveWithDefaultStatus(product);
         });
-        return null;
     }
     @Override
     public List<ProductDTO> findAllProducts() {

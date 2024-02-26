@@ -15,8 +15,6 @@ public interface UserReviewMapper {
 
     UserReviewDTO userReviewToUserReviewDTO(UserReview userReview);
 
-    UserReview userReviewDTOToUserReview(UserReviewDTO userReviewDTO);
-
     UserReview convertToUserReview(UserReviewSaveRequest request);
 
     List<UserReviewDTO> converToReviewList(List<UserReview> review);

@@ -3,10 +3,10 @@ package com.berkayarslan.UserEngage.model;
 
 import com.berkayarslan.UserEngage.general.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity

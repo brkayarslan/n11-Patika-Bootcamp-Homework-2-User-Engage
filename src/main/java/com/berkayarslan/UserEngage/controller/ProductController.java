@@ -48,8 +48,8 @@ public class ProductController {
     }
 
     @PostMapping("/all")
-    public ResponseEntity<RestResponse<ProductDTO>> saveAllProducts(@RequestBody List<ProductSaveRequest> request){
-        return ResponseEntity.ok(RestResponse.of(productControllerContract.saveAllProduct(request)));
+    public void saveAllProducts(@RequestBody List<ProductSaveRequest> request){
+        productControllerContract.saveAllProduct(request);
     }
 
     @PatchMapping("/{id}/price")

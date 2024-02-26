@@ -27,5 +27,5 @@ public interface ProductControllerContract {
 
     ProductDTO deactivateProduct(Long id);
 
-    ProductDTO saveAllProduct(List<ProductSaveRequest> request);
+    void saveAllProduct(List<ProductSaveRequest> request);
 }
