@@ -19,9 +19,9 @@ public class UserCouponController {
         this.couponControllerContract = couponControllerContract;
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<RestResponse<List<UserCouponDTO>>> findAllUsersCoupons(@PathVariable Long id){
-        List<UserCouponDTO> couponDTOList = couponControllerContract.findAllUserCoupons(id);
+    @GetMapping("/{user_id}")
+    public ResponseEntity<RestResponse<List<UserCouponDTO>>> findAllUsersCoupons(@PathVariable Long user_id){
+        List<UserCouponDTO> couponDTOList = couponControllerContract.findAllUserCoupons(user_id);
         return ResponseEntity.ok(RestResponse.of(couponDTOList));
     }
 

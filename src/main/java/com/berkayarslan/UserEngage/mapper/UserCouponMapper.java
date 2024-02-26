@@ -15,11 +15,6 @@ public interface UserCouponMapper {
     UserCouponMapper INSTANCE = Mappers.getMapper(UserCouponMapper.class);
 
     UserCouponDTO userCouponToUserCouponDTO(UserCoupon userCoupon);
-
-    UserCoupon userCouponDTOToUSerCoupon(UserCouponDTO userCouponDTO);
-
-    UserCoupon userCouponDTOToUSerCoupon(UserSaveRequest request);
-
     UserCoupon userCouponDTOToUSerCoupon(UserCouponSaveRequest userCouponSaveRequest);
 
     List<UserCouponDTO> userCouponListToUserCouponDTOList(List<UserCoupon> couponList);

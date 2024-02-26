@@ -17,8 +17,8 @@ public class UserCouponControllerContractImpl implements com.berkayarslan.UserEn
     private final UserCouponService couponService;
 
     @Override
-    public List<UserCouponDTO> findAllUserCoupons(Long id) {
-        List<UserCoupon> couponList = couponService.findByUserId(id);
+    public List<UserCouponDTO> findAllUserCoupons(Long user_id) {
+        List<UserCoupon> couponList = couponService.findByUserId(user_id);
         return UserCouponMapper.INSTANCE.userCouponListToUserCouponDTOList(couponList);
     }
 

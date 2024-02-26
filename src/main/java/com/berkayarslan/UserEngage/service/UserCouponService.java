@@ -1,5 +1,7 @@
 package com.berkayarslan.UserEngage.service;
 
+import com.berkayarslan.UserEngage.erroremessage.UserCouponErrorMessage;
+import com.berkayarslan.UserEngage.exceptions.ItemNotFoundException;
 import com.berkayarslan.UserEngage.general.BaseEntityService;
 import com.berkayarslan.UserEngage.model.UserCoupon;
 import com.berkayarslan.UserEngage.repository.UserCouponRepository;
@@ -13,43 +15,13 @@ public class UserCouponService extends BaseEntityService<UserCoupon, UserCouponR
         super(repository);
     }
 
-    public List<UserCoupon> findByUserId(Long userId) {
-        return getRepository().findByUserId(userId);
+    public List<UserCoupon> findByUserId(Long user_id) {
+        List<UserCoupon> userCoupons = getRepository().findByUserId(user_id);
+        if(userCoupons.isEmpty()){
+            throw new ItemNotFoundException(UserCouponErrorMessage.USERS_COUPON_NOT_FOUND);
+        }
+        else {
+            return userCoupons;
+        }
     }
-
-//    private final UserCouponRepository userCouponRepository;
-//    private final UserCouponMapper userCouponMapper;
-//
-//    @Autowired
-//    public UserCouponService(UserCouponRepository userCouponRepository, UserCouponMapper userCouponMapper) {
-//        this.userCouponRepository = userCouponRepository;
-//        this.userCouponMapper = userCouponMapper;
-//    }
-//
-//    public List<UserCouponDTO> findAllUserCoupons(){
-//        return userCouponRepository.findAll().stream()
-//                .map(userCouponMapper::userCouponToUserCouponDTO)
-//                .collect(Collectors.toList());
-//    }
-//
-//    public Optional<UserCouponDTO> findUserCouponsById(Long id){
-//        return userCouponRepository.findById(id)
-//                .map(userCouponMapper::userCouponToUserCouponDTO);
-//    }
-//
-//    public List<UserCouponDTO> findUserCouponsByUserId(Long userId){
-//        return userCouponRepository.findByUserId(userId).stream()
-//                .map(userCouponMapper::userCouponToUserCouponDTO)
-//                .collect(Collectors.toList());
-//    }
-//    public UserCouponDTO saveUserCoupon(UserCouponDTO userCouponDTO){
-//        UserCoupon userCoupon = userCouponMapper.userCouponDTOToUSerCoupon(userCouponDTO);
-//        UserCoupon savedUserCoupon = userCouponRepository.save(userCoupon);
-//        return userCouponMapper.userCouponToUserCouponDTO(savedUserCoupon);
-//    }
-//
-//    public void deleteUserCouponById(Long id){
-//        userCouponRepository.deleteById(id);
-//    }
-
 }
