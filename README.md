@@ -64,6 +64,18 @@ This project adopts a clean, layered architecture for separation of concerns and
  - List Reviews by Product ID: GET /api/v1/reviews/productId/{productId}
  - Get Review by ID: GET /api/v1/reviews/{id}
  - Update Review by ID: PATCH /api/v1/reviews/{id}
-
+### Categories
+- Create Category: POST /api/v1/categories
+- List All Categories: GET /api/v1/categories
+- Get Category by ID: GET /api/v1/categories/{id}
+- Update Category: PUT /api/v1/categories/{id}
+- Delete Category: DELETE /api/v1/categories/{id}
+### Products
+- Create Product: POST /api/v1/products
+- List All Products: GET /api/v1/products
+- Get Product by ID: GET /api/v1/products/{id}
+- Update Product: PUT /api/v1/products/{id}
+- Delete Product: DELETE /api/v1/products/{id}
+ 
 After you run the project, you can access more detailed documentation about APIs from this site with the Swagger UI implementation.
  http://localhost:8080/swagger-ui.html
