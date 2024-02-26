@@ -1,5 +1,8 @@
 package com.berkayarslan.UserEngage.service;
 
+import com.berkayarslan.UserEngage.erroremessage.ProductErrorMessage;
+import com.berkayarslan.UserEngage.erroremessage.UserCouponErrorMessage;
+import com.berkayarslan.UserEngage.exceptions.ItemNotFoundException;
 import com.berkayarslan.UserEngage.general.BaseEntityService;
 import com.berkayarslan.UserEngage.model.Product;
 import com.berkayarslan.UserEngage.model.Status;
@@ -24,7 +27,13 @@ public class ProductService extends BaseEntityService<Product, ProductRepository
     }
 
     public List<Product> findByCategoryId(Long categoryId) {
-        return getRepository().findByStatusAndCategoryId(Status.ACTIVE,categoryId);
+
+        List<Product> products = getRepository().findByStatusAndCategoryId(Status.ACTIVE,categoryId);
+        if (products.isEmpty()){
+            throw new ItemNotFoundException(ProductErrorMessage.PRODUCT_NOT_FOUND);
+        }else {
+            return products;
+        }
     }
 
     public List<Product> findProductsByExpirationDateBefore (LocalDateTime localDateTime){
